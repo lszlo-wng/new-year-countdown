@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>New Year Countdown</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #000;
+      color: #fff;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .container {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .time {
+      font-size: clamp(2rem, 8vw, 6rem);
+      letter-spacing: 0.05em;
+    }
+
+    .label {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      opacity: 0.6;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div>
+      <div class="time" id="countdown">00:00:00:00</div>
+      <div class="label">Until New Year</div>
+    </div>
+  </div>
+
+  <script>
+    function updateCountdown() {
+      const now = new Date();
+      const year = now.getFullYear() + 1;
+      const newYear = new Date(`January 1, ${year} 00:00:00`);
+      const diff = newYear - now;
+
+      if (diff <= 0) {
+        document.getElementById("countdown").textContent = "HAPPY NEW YEAR";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("countdown").textContent =
+        `${String(days).padStart(2, "0")}:` +
+        `${String(hours).padStart(2, "0")}:` +
+        `${String(minutes).padStart(2, "0")}:` +
+        `${String(seconds).padStart(2, "0")}`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
