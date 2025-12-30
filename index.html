@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>2025</title>
+  <title>New Year Countdown</title>
   <style>
     html, body {
       margin: 0;
@@ -33,13 +33,12 @@
       text-transform: uppercase;
     }
   </style>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><text y=%2214%22 font-size=%2216%22>🎇</text></svg>">
 </head>
 <body>
   <div class="container">
     <div>
       <div class="time" id="countdown">00:00:00:00</div>
-      <div class="label">Until The New Year</div>
+      <div class="label">Until New Year</div>
     </div>
   </div>
 
@@ -53,7 +52,6 @@
       if (diff <= 0) {
         document.getElementById("countdown").textContent = "HAPPY NEW YEAR";
         return;
-        <title>2026!!</title>
       }
 
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
